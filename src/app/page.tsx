@@ -25,12 +25,14 @@ export default function Dashboard() {
   }, []);
 
   async function markToday() {
-    const today = new Date().toISOString().split("T")[0];
+  console.log("Button clicked");
 
-    if (lastStudyDate === today) {
-      setMessage("You have already marked today.");
-      return;
-    }
+  const today = new Date().toISOString().split("T")[0];
+
+  if (lastStudyDate === today) {
+    setMessage("You have already marked today.");
+    return;
+  }
 
     const res = await fetch("/api/study", {
       method: "POST",

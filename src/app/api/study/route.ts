@@ -16,7 +16,7 @@ function getLocalDateIST() {
 function isYesterday(dateString: string) {
   if (!dateString) return false;
 
-  const today = new Date();
+  const today = new Date(dateString + "T00:00:00");
   const istOffset = 330;
   const localToday = new Date(today.getTime() + istOffset * 60 * 1000);
 
@@ -38,24 +38,31 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+
   const data = fs.readFileSync(dataFilePath, "utf-8");
   const json = JSON.parse(data);
-
   const localDate = getLocalDateIST();
 
   // Check if already studied today
   if (json.lastStudyDate !== localDate) {
     // Update streak: increment if yesterday was studied, else reset
-    json.streak = isYesterday(json.lastStudyDate) ? json.streak + 1 : 1;
+    const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+if (json.lastStudyDate === yesterdayStr) {
+  json.streak = json.streak + 1;
+} else {
+  json.streak = 1;
+}
 
     // Update last study date
     json.lastStudyDate = localDate;
 
     // Add to history
     json.history.push(localDate);
-
-    // Save updated data
-    fs.writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+fs.writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+    
   }
 
   return NextResponse.json(json);
