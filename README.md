@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Daily Learning Streak Tracker
 
-## Getting Started
+Project Description
 
-First, run the development server:
+The Daily Learning Streak Tracker is a web application that helps students maintain consistent study habits by tracking their daily learning streak.
 
-```bash
+Students can mark when they studied each day and the system automatically updates their streak, total study days, and study history.
+
+Features
+
+- Mark "I Studied Today"
+- View current study streak
+- View total study days
+- View last study date
+- View study history
+
+Technology Stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- API Routes
+- JSON file storage
+
+Streak Logic
+
+If a student studies on consecutive days, the streak increases.
+
+Example:
+
+10 March → Studied
+11 March → Studied
+12 March → Studied
+
+Streak = 3
+
+If a day is missed, the streak resets to 1.
+
+Running the Project Locally
+
+Install dependencies:
+
+npm install
+
+Run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the application in your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deployment
 
-## Learn More
+The application is deployed on Vercel.
 
-To learn more about Next.js, take a look at the following resources:
+Links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GitHub Repository:
+https://github.com/siricilladeepak-cmd/learning-streak-tracker
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Live Application:
+deepak-learning-streak-tracker.vercel.app
